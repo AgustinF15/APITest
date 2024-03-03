@@ -7,9 +7,9 @@ namespace Infrastructure.UnitOfWork;
 public class UnitOfWork : IUnitOfWork, IDisposable
 {
     private readonly BibliotecaContext _context;
-    private IClientRepository _clientRepository;
-    private IBookRepository _bookRepository;
-    private IOrderRepository _orderRepository;
+    private IClientRepository _client;
+    private IBookRepository _book;
+    private IOrderRepository _order;
 
     public UnitOfWork(BibliotecaContext context)
     {
@@ -20,11 +20,11 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            if (_clientRepository == null)
+            if (_client == null)
             {
-                _clientRepository = new ClientRepository(_context);
+                _client = new ClientRepository(_context);
             }
-            return _clientRepository;
+            return _client;
         }
     }
 
@@ -32,11 +32,11 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            if (_bookRepository == null)
+            if (_book == null)
             {
-                _bookRepository = new BookRepository(_context);
+                _book = new BookRepository(_context);
             }
-            return _bookRepository;
+            return _book;
         }
     }
 
@@ -44,11 +44,11 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            if (_orderRepository == null)
+            if (_order == null)
             {
-                _orderRepository = new OrderRepository(_context);
+                _order = new OrderRepository(_context);
             }
-            return _orderRepository;
+            return _order;
         }
     }
 

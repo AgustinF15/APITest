@@ -1,7 +1,11 @@
+using API.Extensions;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 
 //Conexion a DB
 builder.Services.AddDbContext<BibliotecaContext>(options =>
@@ -10,6 +14,7 @@ builder.Services.AddDbContext<BibliotecaContext>(options =>
 });
 
 // Add services to the container.
+builder.Services.AddAplicacionServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

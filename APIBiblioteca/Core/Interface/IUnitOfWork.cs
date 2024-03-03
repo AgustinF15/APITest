@@ -2,9 +2,9 @@
 {
     public interface IUnitOfWork
     {
-        public IClientRepository ClientRepository { get; }
-        public IBookRepository BookRepository { get; }
-        public IOrderRepository OrderRepository { get; }
+        public IClientRepository Client { get; }
+        public IBookRepository Book { get; }
+        public IOrderRepository Order { get; }
         Task<int> SaveAsync();
     }
 }
